@@ -28,4 +28,4 @@ def evaluate_expression(expression, prefix=True):
 
 evaluate_expression("+ 1 - 5 * 2 4", True)
 evaluate_expression("1 3 + 4 +", False)
-
+evaluate_expression("+ + 3 4 * 2 5", True)
