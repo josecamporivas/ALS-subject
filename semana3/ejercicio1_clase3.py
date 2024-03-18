@@ -40,4 +40,3 @@ def distingue_vocales_consonantes(cadena: str):
 cadena = pide_cadena()
 distingue_vocales_consonantes(cadena.lower())
 
-print("hooa", end="")
