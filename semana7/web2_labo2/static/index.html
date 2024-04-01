@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Facturas</title>
+    <style>
+        form{
+            margin-bottom: 30px;
+        }
+        .form_data {
+            display: grid;
+            grid-template-columns: 100px 200px;
+            grid-gap: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Facturas</h1>
+    <form action="/factura" method="POST">
+        <h2>Emisor</h2>
+        <div class="form_data">
+            <label for="cif_emisor">CIF</label>
+            <input type="text" name="cif_emisor" id="cif_emisor" placeholder="CIF..." />
+            <label for="nombre_emisor">Nombre</label>
+            <input type="text" name="nombre_emisor" id="nombre_emisor" placeholder="nombre..." />
+            <label for="direccion_emisor">Dirección</label>
+            <input type="text" name="direccion_emisor" id="direccion_emisor" placeholder="dirección..." />
+            <label for="poblacion_emisor">Población</label>
+            <input type="text" name="poblacion_emisor" id="poblacion_emisor" placeholder="población..." />
+            <label for="provincia_emisor">Provincia</label>
+            <input type="text" name="provincia_emisor" id="provincia_emisor" placeholder="provincia..." />
+            <label for="codigo_postal_emisor">Código postal</label>
+            <input type="text" name="codigo_postal_emisor" id="codigo_postal_emisor" placeholder="código postal..." />
+            <label for="pais_emisor">País</label>
+            <input type="text" name="pais_emisor" id="pais_emisor" placeholder="país..." />
+            <label for="persona_contacto_emisor">Persona de contacto</label>
+            <input type="text" name="persona_contacto_emisor" id="persona_contacto_emisor" placeholder="persona de contacto..." />
+            <label for="email_emisor">Email</label>
+            <input type="text" name="email_emisor" id="email_emisor" placeholder="email..." />
+            <label for="telefono_emisor">Teléfono</label>
+            <input type="text" name="telefono_emisor" id="telefono_emisor" placeholder="teléfono..." />
+        </div>
+        <h2>Cliente</h2>
+        <div class="form_data">
+            <label for="cif_cliente">CIF</label>
+            <input type="text" name="cif_cliente" id="cif_cliente" placeholder="CIF..." />
+            <label for="nombre_cliente">Nombre</label>
+            <input type="text" name="nombre_cliente" id="nombre_cliente" placeholder="nombre..." />
+            <label for="direccion_cliente">Dirección</label>
+            <input type="text" name="direccion_cliente" id="direccion_cliente" placeholder="dirección..." />
+            <label for="poblacion_cliente">Población</label>
+            <input type="text" name="poblacion_cliente" id="poblacion_cliente" placeholder="población..." />
+            <label for="provincia_cliente">Provincia</label>
+            <input type="text" name="provincia_cliente" id="provincia_cliente" placeholder="provincia..." />
+            <label for="codigo_postal_cliente">Código postal</label>
+            <input type="text" name="codigo_postal_cliente" id="codigo_postal_cliente" placeholder="código postal..." />
+            <label for="pais_cliente">País</label>
+            <input type="text" name="pais_cliente" id="pais_cliente" placeholder="país..." />
+            <label for="persona_contacto_cliente">Persona de contacto</label>
+            <input type="text" name="persona_contacto_cliente" id="persona_contacto_cliente" placeholder="persona de contacto..." />
+            <label for="email_cliente">Email</label>
+            <input type="text" name="email_cliente" id="email_cliente" placeholder="email..." />
+            <label for="telefono_cliente">Teléfono</label>
+            <input type="text" name="telefono_cliente" id="telefono_cliente" placeholder="teléfono..." />
+        </div>
+        <h2>Lineas factura</h2>
+        <div id="lines">
+            <div class="line">
+                <label for="concepto_1">Concepto</label>
+                <input type="text" name="concepto_1" id="concepto_1" placeholder="concepto..." />
+                <label for="precio_1">Precio</label>
+                <input type="text" name="precio_1" id="precio_1" placeholder="precio..." />
+                <label for="cantidad_1">Cantidad</label>
+                <input type="text" name="cantidad_1" id="cantidad_1" placeholder="cantidad..." />
+            </div>
+            <button id="addLine">Añadir línea</button>
+        </div>
+
+        <label for="iva">IVA</label>
+        <input type="number" name="iva" id="iva" />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+<script>
+    document.getElementById('addLine').addEventListener('click', function(e) {
+        e.preventDefault();
+        const lines = document.getElementById('lines');
+        const line = document.createElement('div');
+        line.classList.add('line');
+        line.innerHTML = `
+            <label for="concepto_${lines.children.length}">Concepto</label>
+            <input type="text" name="concepto_${lines.children.length}" id="concepto_${lines.children.length}" placeholder="concepto..." />
+            <label for="precio_${lines.children.length}">Precio</label>
+            <input type="text" name="precio_${lines.children.length}" id="precio_${lines.children.length}" placeholder="precio..." />
+            <label for="cantidad_${lines.children.length}">Cantidad</label>
+            <input type="text" name="cantidad_${lines.children.length}" id="cantidad_${lines.children.length}" placeholder="cantidad..." />
+        `;
+        lines.insertBefore(line, document.getElementById('addLine'));
+    });
+</script>
+</html>

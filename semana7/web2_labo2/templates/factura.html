@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Factura</title>
+</head>
+<body>
+<h1>Factura</h1>
+<h2>Emisor</h2>
+<p>CIF: {{ emisor.cif_emisor }}</p>
+<p>Nombre: {{ emisor.nombre_emisor }}</p>
+<p>Dirección: {{ emisor.direccion_emisor }}</p>
+<p>Población: {{ emisor.poblacion_emisor }}</p>
+<p>Provincia: {{ emisor.provincia_emisor }}</p>
+<p>Código postal: {{ emisor.codigo_postal_emisor }}</p>
+<p>País: {{ emisor.pais_emisor }}</p>
+<p>Persona de contacto: {{ emisor.persona_contacto_emisor }}</p>
+<p>Email: {{ emisor.email_emisor }}</p>
+<p>Teléfono: {{ emisor.telefono_emisor }}</p>
+
+<h2>Cliente</h2>
+<p>CIF: {{ cliente.cif_cliente }}</p>
+<p>Nombre: {{ cliente.nombre_cliente }}</p>
+<p>Dirección: {{ cliente.direccion_cliente }}</p>
+<p>Población: {{ cliente.poblacion_cliente }}</p>
+<p>Provincia: {{ cliente.provincia_cliente }}</p>
+<p>Código postal: {{ cliente.codigo_postal_cliente }}</p>
+<p>País: {{ cliente.pais_cliente }}</p>
+<p>Persona de contacto: {{ cliente.persona_contacto_cliente }}</p>
+<p>Email: {{ cliente.email_cliente }}</p>
+<p>Teléfono: {{ cliente.telefono_cliente }}</p>
+
+<h2>Lineas</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Concepto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for linea in lines %}
+            <tr>
+                <td>{{ linea.concepto }}</td>
+                <td>{{ linea.cantidad }}</td>
+                <td>{{ linea.precio }}</td>
+                <td>{{ linea.total }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Importe bruto: {{ importe_bruto }} </p>
+<p>IVA: {{ iva }}</p>
+<p>Importe total: {{ importe_total }}</p>
+</body>
+</html>
