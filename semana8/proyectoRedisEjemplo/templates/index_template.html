@@ -16,12 +16,26 @@
         <p>No hay mensajes</p>
     {% endif %}
     <form action="/saludo" method="post">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
         <br>
         <label for="mensaje">Mensaje:</label>
         <input type="text" id="mensaje" name="mensaje">
         <button type="submit">Enviar</button>
     </form>
+
+    {% set error_msg_list = get_flashed_messages() %}
+    {% if error_msg_list %}
+        <div id="div-error" style="color: red;">
+            <ul>
+                {% for msg in error_msg_list %}
+                    <li>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 </body>
 </html>
