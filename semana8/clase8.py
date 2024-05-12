@@ -37,7 +37,7 @@ def escribir_archivo_csv(nf: str, l: list):
 def leer_archivo_csv(nf: str):
     toret = []
     with open(nf, "rt") as f:
-        reader = csv.DictReader(f, ['nombre', 'lat', 'lon'], delimiter=";")
+        reader = csv.DictReader(f, fieldnames=['nombre', 'lat', 'lon'], delimiter=";")
         for row in reader:
             toret.append(row)
 

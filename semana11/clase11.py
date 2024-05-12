@@ -64,9 +64,9 @@ class PersonajeSimpson(Personaje):
 
     def __getattribute__(self, item):
         if item == "di" and self.nombre.lower() == "maggie":
-            return lambda: f"{self.nombre}: Chup-chup"
+            return lambda msg: f"{self.nombre}: Chup-chup"
         else:
-            super().__getattribute__(item)
+            return super().__getattribute__(item)
 
 def str_dir(obj) -> str:
     l_miembros = dir(obj)
@@ -82,7 +82,9 @@ def str_dir(obj) -> str:
 
 if __name__ == "__main__":
     p0 = Punto(1,2)
-    hasattr(p0, 'x')
+    print(hasattr(p0, 'x'))
+    print(hasattr(p0, 'distancia'))
+    print(hasattr(p0, 'z'))
 
     p1 = Personaje('Piolin')
     print(p1.di("Hola hola hola"))
@@ -90,7 +92,5 @@ if __name__ == "__main__":
     p2 = PersonajeSimpson("Maggie")
     print(p2.di("Tengo hambre"))
 
-
-
-
-
+    p3 = PersonajeSimpson("Homer")
+    print(p3.bebe())
